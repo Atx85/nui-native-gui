@@ -23,7 +23,7 @@ The GitHub release assets bundle the compiled shared library, the C headers, the
 - docs and licenses: `README.md`, `NOTICES.txt`, `LANGUAGES.md`, `OPENGL.md`
 - integration examples: `examples/` and `cmake/`
 
-Download the latest platform package from the GitHub Releases page:
+Release packages are generated automatically for tagged builds. The workflow in [.github/workflows/release.yml](.github/workflows/release.yml) uploads the exact asset names below to the GitHub Release for that tag.
 
 - Linux x86_64: https://github.com/Atx85/nui-native-gui/releases/latest/download/native-ui-linux-x86_64.zip
 - macOS x86_64: https://github.com/Atx85/nui-native-gui/releases/latest/download/native-ui-macos-x86_64.zip
