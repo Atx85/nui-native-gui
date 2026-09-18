@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><title>All controls</title></head><body>
+<header><img id="logo" src="tile" alt="Native UI"><section class="heading-copy"><label class="heading">Native UI · Controls catalogue</label><label>Every language uses this same HTML and CSS. Scroll the panel to explore.</label></section></header>
+<main class="workspace">
+<section class="canvas-pane"><canvas id="scene" tabindex="0"></canvas><label class="caption">Native canvas · drag the size slider, toggle animation, or click the canvas.</label><input id="status" readonly value="Ready — change controls, then press Read values."></section>
+<aside class="panel" id="options" tabindex="0">
+<section id="code-controls"><label class="section-title">Created from code</label></section>
+<label class="section-title">Checkbox group · choose several</label>
+<label>Export formats · one name, separate values</label>
+<div class="row"><input id="format-png" type="checkbox" name="formats" value="png" checked><label for="format-png" class="grow">PNG</label></div>
+<div class="row"><input id="format-svg" type="checkbox" name="formats" value="svg"><label for="format-svg" class="grow">SVG</label></div>
+<div class="row"><input id="format-pdf" type="checkbox" name="formats" value="pdf" checked><label for="format-pdf" class="grow">PDF</label></div>
+<div class="row"><input id="format-avif" type="checkbox" name="formats" value="avif" disabled><label for="format-avif" class="grow">AVIF · unavailable</label></div>
+<div class="row"><button id="formats-preset">PNG + SVG</button><button id="formats-clear">Clear group</button></div>
+<label class="section-title">Live controls</label>
+<label for="entry">Text · value and maxlength</label><input id="entry" type="text" value="Hello" maxlength="18" placeholder="Up to 18 characters">
+<label for="choice">Select · populated from your application</label><select id="choice"></select>
+<div class="row"><button id="reload" type="button">Replace list</button><button id="clear">Clear list</button></div>
+<label for="size">Slider · min 10, max 100, step 5</label><input id="size" type="range" min="10" max="100" step="5" value="55">
+<div class="row"><input id="enabled" type="checkbox" checked><label for="enabled" class="grow">Animate canvas</label></div>
+<button id="apply" class="primary">Read values</button>
+<label class="section-title">Text input variants</label>
+<label for="placeholder">Implicit text type / placeholder</label><input id="placeholder" placeholder="Enter a value">
+<label for="readonly">Readonly · host can still set its value</label><input id="readonly" readonly value="Application controlled">
+<label for="disabled-text">Disabled</label><input id="disabled-text" disabled value="Unavailable">
+<label class="section-title">Checkbox variants</label>
+<div class="row"><input id="unchecked" type="checkbox"><label for="unchecked" class="grow">Unchecked</label></div>
+<div class="row"><input id="disabled-check" type="checkbox" disabled><label for="disabled-check" class="grow">Disabled, unchecked</label></div>
+<div class="row"><input id="disabled-checked" type="checkbox" disabled checked><label for="disabled-checked" class="grow">Disabled, checked</label></div>
+<label class="section-title">Slider variants</label>
+<label for="fraction">Negative bounds / fractional step</label><input id="fraction" type="range" min="-1" max="1" step="0.25" value="0.5">
+<label for="continuous">Continuous · step any</label><input id="continuous" type="range" min="0" max="1" step="any" value="0.3">
+<label for="default-range">Defaults · 0–100, midpoint, step 1</label><input id="default-range" type="range">
+<label for="fixed-range">Equal endpoints</label><input id="fixed-range" type="range" min="3" max="3">
+<label for="disabled-range">Disabled slider</label><input id="disabled-range" type="range" disabled value="70">
+<label class="section-title">Select variants</label>
+<label for="static-select">HTML values, selected and disabled options</label><select id="static-select"><option>Label is the value</option><option value="second" selected>Selected option</option><option value="off" disabled>Disabled option</option></select>
+<label for="disabled-select">Disabled select</label><select id="disabled-select" disabled><option>Unavailable</option></select>
+<label for="empty-select">Empty list</label><select id="empty-select"></select>
+<label for="all-disabled">All options disabled / no selection</label><select id="all-disabled"><option disabled>A</option><option disabled>B</option></select>
+<label for="selected-disabled">Explicitly selected disabled option</label><select id="selected-disabled"><option disabled selected>Selected but unavailable</option><option value="ok">Enabled alternative</option></select>
+<label for="long-select">Long list · wheel and keyboard navigation</label><select id="long-select"><option>One</option><option>Two</option><option>Three</option><option>Four</option><option>Five</option><option>Six</option><option>Seven</option><option>Eight</option><option>Nine</option><option>Ten</option></select>
+<label class="section-title">Buttons and labels</label><button id="disabled-button" disabled>Disabled button</button><label id="rich-label" style="color:#087aff">A label with a <span>span</span>, Unicode Ω and &amp; entities.</label>
+<label class="section-title">Images and another native canvas</label>
+<div class="row"><img id="contain-image" src="tile" alt="Contain" class="contain"><img id="cover-image" src="tile" alt="Cover" class="cover"><img id="fill-image" src="tile" alt="Fill" class="fill"></div>
+<img id="missing-image" src="missing" alt="Missing image fallback">
+<canvas id="preview" tabindex="-1"></canvas><label>Padded canvas · click to focus; skipped by Tab.</label>
+<label class="section-title">Overflow modes</label>
+<label>visible · content extends outside its box</label><div id="visible-panel" class="overflow-sample visible"><label class="overflow-content">Visible overflow</label></div>
+<label>hidden · clipped, scrollable from code</label><div id="hidden-panel" class="overflow-sample hidden"><label class="overflow-content">Hidden overflow</label></div>
+<label>clip · clipped, no scrolling</label><div id="clip-panel" class="overflow-sample clip"><label class="overflow-content">Clipped overflow</label></div>
+<label>auto · scrollbars when needed</label><div id="auto-panel" class="overflow-sample auto" tabindex="0"><label class="overflow-content">Automatic scrollbars</label></div>
+<label>scroll · always reserve scrollbar space</label><div id="scroll-panel" class="overflow-sample scroll" tabindex="0"><label class="overflow-content">Permanent scrollbars</label></div>
+<label>x auto / y hidden · try horizontal scrolling</label><div id="axis-panel" class="overflow-sample axes" tabindex="0"><label class="overflow-content">Independent axes</label></div>
+<footer><label class="caption">Tab changes focus. Arrows edit sliders and selects.</label></footer>
+</aside></main>
+</body></html>

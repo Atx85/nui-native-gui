@@ -1,0 +1,57 @@
+{
+  "platform": "x86_64-apple-darwin",
+  "languages": {
+    "c": {
+      "status": "build and state tests passed",
+      "backends": {
+        "sdl3": {
+          "build": "passed",
+          "state_tests": "passed",
+          "render_tests": "not run by packager"
+        },
+        "raylib": {
+          "build": "passed",
+          "state_tests": "passed",
+          "render_tests": "not run by packager"
+        },
+        "opengl": {
+          "build": "passed",
+          "state_tests": "passed",
+          "render_tests": "not run by packager"
+        }
+      }
+    },
+    "rust": {
+      "status": "build and state tests passed",
+      "backends": {
+        "sdl3": {
+          "build": "passed",
+          "state_tests": "passed",
+          "render_tests": "not run by packager"
+        },
+        "raylib": {
+          "build": "passed",
+          "state_tests": "passed",
+          "render_tests": "not run by packager"
+        },
+        "opengl": {
+          "build": "passed",
+          "state_tests": "passed",
+          "render_tests": "not run by packager"
+        }
+      }
+    },
+    "go": {
+      "status": "unverified",
+      "backends": {}
+    },
+    "zig": {
+      "status": "unverified",
+      "backends": {}
+    },
+    "jai": {
+      "status": "unverified",
+      "backends": {}
+    }
+  }
+}

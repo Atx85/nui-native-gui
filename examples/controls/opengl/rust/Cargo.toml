@@ -1,0 +1,16 @@
+[package]
+autotests = false
+name = "native-ui-opengl-examples"
+version = "0.1.0"
+edition = "2024"
+default-run = "opengl-showcase"
+
+[dependencies]
+native-ui = { path = "../../../../crates/core" }
+native-ui-opengl = { path = "../../../../crates/opengl" }
+native-ui-sdl3 = { path = "../../../../crates/sdl3" }
+sdl3 = { version = "0.20.0", features = ["build-from-source-static"] }
+
+[[bin]]
+name = "opengl-showcase"
+path = "showcase.rs"

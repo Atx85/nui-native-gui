@@ -1,0 +1,36 @@
+const demo = @import("showcase");
+const app = demo.app;
+const c = demo.c;
+const std = @import("std");
+pub fn main() !void {
+    const styles = try std.fmt.allocPrintSentinel(std.heap.page_allocator, "{s}{s}", .{ app.base_css, demo.css }, 0);
+    defer std.heap.page_allocator.free(styles);
+    const ui = c.nui_create(demo.html, styles, 940, 640) orelse return error.Create;
+    defer _ = c.nui_destroy(ui);
+    var alternate = false;
+    try app.click(ui, "name");
+    try app.ok(c.nui_text_input(ui, "!"));
+    try demo.update(ui, &alternate);
+    try app.require(c.nui_changed(ui, "name") == 1);
+    try app.ok(c.nui_end_frame(ui));
+    try app.ok(c.nui_set_value(ui, "name", "Host update"));
+    try app.require(c.nui_changed(ui, "name") == 0);
+    try app.click(ui, "options");
+    try demo.update(ui, &alternate);
+    try app.ok(c.nui_set_value(ui, "mode", "draft"));
+    try app.expectValue(ui, "mode", "draft");
+    try app.ok(c.nui_end_frame(ui));
+    try app.click(ui, "reset");
+    try demo.update(ui, &alternate);
+    try app.expectValue(ui, "name", "Ada");
+    try app.expectValue(ui, "volume", "55");
+    try app.require(c.nui_checked(ui, "enabled") == 1);
+    try app.ok(c.nui_end_frame(ui));
+    try app.click(ui, "swap");
+    try demo.update(ui, &alternate);
+    try app.require(alternate);
+    try app.ok(c.nui_end_frame(ui));
+    try app.click(ui, "scene");
+    try demo.update(ui, &alternate);
+    try app.expectValue(ui, "status", "Canvas pressed");
+}

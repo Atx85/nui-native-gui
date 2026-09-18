@@ -1,0 +1,11 @@
+{
+  "format_version": 1,
+  "abi_version": 2,
+  "version": "0.1.0",
+  "target": "x86_64-apple-darwin",
+  "runtime": "libnative_ui.dylib",
+  "import_library": null,
+  "runtime_profile": "borrowed",
+  "standalone_runtime": "standalone/libnative_ui.dylib",
+  "commit": null
+}

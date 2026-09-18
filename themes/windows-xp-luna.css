@@ -1,0 +1,182 @@
+/* Reusable Windows XP Luna skin. Load before application layout/overrides. */
+label {
+    height: 26px;
+}
+input:not([type="checkbox"]):not([type="range"]), select {
+    height: 44px;
+    padding: 10px 12px;
+}
+input[type="checkbox"] {
+    width: 26px;
+    height: 26px;
+    padding: 3px;
+}
+button {
+    height: 56px;
+    padding: 12px 20px;
+}
+
+body, .panel {
+    background-color: #ece9d8;
+}
+
+button {
+    font-size: 13px;
+    color: #000000;
+    background: linear-gradient(to bottom, #ffffff 0%, #f5f4ea 45%, #e6e3d5 100%);
+    border: 1px solid #003c74;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+button:hover {
+    background: linear-gradient(to bottom, #fffef9, #f5f2df);
+    box-shadow: inset 0 0 0 2px #f6c65a;
+}
+
+button:focus {
+    box-shadow: inset 0 0 0 2px #a5c5ed;
+    outline: 1px dotted #383838;
+    outline-offset: -5px;
+}
+
+button:focus:hover {
+    box-shadow: inset 0 0 0 2px #f6c65a;
+}
+
+button:active, button:focus:hover:active {
+    background: linear-gradient(to bottom, #d7d3c5, #ece9d8);
+    box-shadow: inset 0 0 0 1px #b9b5a7;
+}
+
+button:disabled {
+    color: #a1a192;
+    border-color: #c9c7ba;
+    background: #f5f4ea;
+    box-shadow: none;
+    outline: none;
+}
+
+label, input, select {
+    font-size: 13px;
+    color: #000000;
+}
+
+input:not([type="checkbox"]):not([type="range"]) {
+    background: #ffffff;
+    border: 1px solid #7f9db9;
+    box-shadow: inset 0 0 0 1px #eef1f5;
+}
+
+input:not([type="checkbox"]):not([type="range"]):hover {
+    border-color: #4f83b3;
+}
+
+input:not([type="checkbox"]):not([type="range"]):focus {
+    border-color: #316ac5;
+}
+
+input:not([type="checkbox"]):not([type="range"])::selection {
+    background: #316ac5;
+    color: #ffffff;
+}
+
+select {
+    background: #ffffff;
+    border: 1px solid #7f9db9;
+}
+
+select:hover, select:focus {
+    border-color: #316ac5;
+}
+
+select::picker-icon {
+    color: #4a6384;
+    background: linear-gradient(to bottom, #e8f1ff, #b8d0f3);
+    border: 1px solid #7f9db9;
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px #f5f9ff;
+}
+
+select:hover::picker-icon {
+    background: linear-gradient(to bottom, #dceaff, #a4c4ef);
+    border-color: #316ac5;
+}
+
+select:active::picker-icon {
+    background: linear-gradient(to bottom, #98b7df, #cfdef4);
+    box-shadow: inset 0 0 0 1px #8daace;
+}
+
+option {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    font-size: 13px;
+}
+
+option:hover {
+    background: #316ac5;
+    color: #ffffff;
+}
+
+option:disabled {
+    background: #ffffff;
+    color: #aca899;
+}
+
+input[type="checkbox"] {
+    color: #21a121;
+    background: linear-gradient(to bottom, #dcdad0, #ffffff 65%);
+    border: 1px solid #1c5180;
+    box-shadow: inset 0 0 0 1px #f5f4eb;
+}
+
+input[type="checkbox"]:hover {
+    box-shadow: inset 0 0 0 2px #ffcf73;
+}
+
+input[type="checkbox"]:focus {
+    outline: 1px dotted #383838;
+    outline-offset: 2px;
+}
+
+input[type="checkbox"]:active {
+    background: #e0dfd7;
+}
+
+input[type="checkbox"]:disabled {
+    border-color: #c9c7ba;
+    color: #aca899;
+    background: #f5f4ea;
+    outline: none;
+}
+
+input:not([type="checkbox"]):not([type="range"]):disabled, select:disabled {
+    background: #ece9d8;
+    color: #aca899;
+    border-color: #c9c7ba;
+}
+
+select:disabled::picker-icon {
+    background: #ece9d8;
+    color: #aca899;
+    border-color: #c9c7ba;
+    box-shadow: none;
+}
+
+/* Range and scroll parts: dimensions and decoration belong to the skin. */
+input[type="range"] { height: 28px; padding: 2px; border: none; background: transparent; }
+input[type="range"]:focus { outline: 1px dotted #383838; outline-offset: 1px; }
+input::slider-track { height: 5px; background: #e4e1d5; border: 1px solid #9d9c92; border-radius: 0; }
+input::slider-fill { background: #b8cbdc; border-radius: 0; }
+input::slider-thumb { width: 12px; height: 22px; background: linear-gradient(to right,#ffffff,#d5e3f4); border: 1px solid #567caa; border-radius: 2px; box-shadow: inset 0 0 0 1px #ffffff; }
+input:hover::slider-thumb { background: #f8edc3; border-color: #bc8d32; }
+input:active::slider-thumb { background: #d5dfef; }
+input:disabled::slider-thumb { background: #e2dfd5; border-color: #aaa89c; }
+::scrollbar { width: 17px; height: 17px; background: #edead8; }
+::scrollbar-track { background: linear-gradient(to right,#f4f2e8,#e8e5d4); border: 1px solid #dedbc9; }
+::scrollbar-thumb { width: 24px; height: 24px; background: linear-gradient(to right,#d6e5f9,#a8c0e2); border: 1px solid #6e91bf; border-radius: 2px; box-shadow: inset 0 0 0 1px #edf4ff; }
+::scrollbar-thumb:hover { background: #c4dcfb; }
+::scrollbar-thumb:active { background: #9db9df; }
+::scrollbar-corner { background: #ece9d8; }

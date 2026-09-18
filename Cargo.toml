@@ -1,0 +1,3 @@
+[workspace]
+resolver = "3"
+members = ["crates/core", "crates/text", "crates/sdl3", "crates/opengl", "crates/raylib", "examples/controls/sdl3/rust", "examples/controls/opengl/rust", "examples/controls/raylib/rust"]

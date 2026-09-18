@@ -1,0 +1,10 @@
+/* Demo-only Mac arrangement; no reusable control styling here. */
+#name-label { top: 60px; }
+#name { top: 86px; }
+#step-label { top: 136px; }
+#step { top: 162px; }
+#counting { top: 218px; }
+#counting-label { left: 156px; top: 216px; width: 352px; }
+button { top: 284px; width: 92px; }
+#reset { left: 312px; }
+#demo { left: 416px; }

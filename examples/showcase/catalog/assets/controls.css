@@ -1,0 +1,35 @@
+/* Applied after the selected reusable skin. Geometry and option examples are shared
+   by every host language; no application-specific IDs exist in the renderer. */
+body { display:flex; flex-direction:column; padding:20px; gap:16px; }
+header { height:54px; display:flex; gap:16px; align-items:center; }
+#logo { width:56px; height:48px; object-fit:contain; }
+.heading-copy { flex-grow:1; }
+.heading { font-size:22px; height:30px; }
+label { height:24px; font-size:13px; }
+.workspace { display:flex; height:0; flex-grow:1; gap:20px; }
+.canvas-pane { flex-grow:1; min-width:280px; display:flex; flex-direction:column; gap:12px; }
+#scene { flex-grow:1; height:0; min-height:160px; padding:12px; border:1px solid #33465a; border-radius:8px; background:#172331; }
+.caption { font-size:11px; height:22px; }
+#options { width:430px; padding:20px;   overflow:auto; overflow-x:hidden; }
+.section-title { height:32px; margin-top:18px; margin-bottom:8px; font-size:17px; }
+input,select { height:30px; margin-bottom:12px; }
+input:not([type="checkbox"]):not([type="range"]) { padding:4px 8px; }
+input[type="checkbox"] { width:20px; height:20px; margin-bottom:0; }
+.row { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.grow { flex-grow:1; }
+button { height:30px; padding:4px 10px; margin-bottom:12px; }
+#reload,#clear,#formats-preset,#formats-clear { width:176px; margin-bottom:0; }
+#status { height:32px; font-size:12px; }
+#rich-label { height:42px; }
+#preview { height:90px; padding:8px; border:2px solid #33465a; background:#172331; }
+img.contain,img.cover,img.fill { width:105px; height:65px; background:#e5e5ea; }
+img.contain { object-fit:contain; } img.cover { object-fit:cover; } img.fill { object-fit:fill; }
+#missing-image { height:36px; }
+.overflow-sample { width:100%; height:48px; margin-bottom:12px; }
+.overflow-content { width:500px; height:80px; }
+.visible { overflow:visible; margin-bottom:44px; }
+.hidden { overflow:hidden; } .clip { overflow:clip; } .auto { overflow:auto; } .scroll { overflow:scroll; }
+.axes { overflow-x:auto; overflow-y:hidden; }
+footer { margin-top:12px; }
+
+.native-checkbox-row { margin-bottom:12px; }

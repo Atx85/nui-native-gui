@@ -1,0 +1,206 @@
+/* Reusable macOS light skin. Load before application layout/overrides. */
+label {
+    height: 20px;
+}
+
+body, .panel {
+    background: #f3f3f3;
+}
+
+label, input, select, button {
+    font-size: 13px;
+    color: #262626;
+}
+
+input:not([type="checkbox"]):not([type="range"]) {
+    height: 30px;
+    padding: 6px 10px;
+    background: #ffffff;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+}
+
+input:not([type="checkbox"]):not([type="range"]):hover {
+    border-color: #b5b5b5;
+}
+
+input:not([type="checkbox"]):not([type="range"]):focus {
+    border-color: #5399e8;
+    outline: 3px solid #a5caf3;
+    outline-offset: 0;
+}
+
+input:not([type="checkbox"]):not([type="range"])::selection {
+    background: #b3d7ff;
+    color: #1d1d1f;
+}
+
+select {
+    height: 26px;
+    padding: 4px 8px;
+    background: #ffffff;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+}
+
+select:hover {
+    border-color: #b5b5b5;
+}
+
+select:focus {
+    border-color: #5399e8;
+    outline: 3px solid #a5caf3;
+    outline-offset: 0;
+}
+
+select::picker-icon {
+    width: 18px;
+    height: 22px;
+    background: #087aff;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    -native-ui-icon: chevron-up-down;
+    -native-ui-icon-size: 8px;
+    -native-ui-icon-stroke: 1.5px;
+}
+
+select:hover::picker-icon {
+    background: #0874ee;
+}
+
+select:active::picker-icon {
+    background: #005dce;
+}
+
+select:active {
+    background: #e8e8e8;
+}
+
+option {
+    background: #ffffff;
+    color: #262626;
+    border: none;
+    font-size: 13px;
+}
+
+option:hover {
+    background: #086bdf;
+    color: #ffffff;
+}
+
+option:disabled {
+    background: #ffffff;
+    color: #a0a0a0;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    padding: 1px;
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+    color: #ffffff;
+}
+
+input[type="checkbox"]:hover {
+    border-color: #929292;
+}
+
+input[type="checkbox"]:checked {
+    background: #086bdf;
+    border-color: #086bdf;
+}
+
+input[type="checkbox"]:checked:hover {
+    background: #1378ec;
+    border-color: #1378ec;
+}
+
+input[type="checkbox"]:focus {
+    outline: 3px solid #a5caf3;
+    outline-offset: 1px;
+}
+
+input[type="checkbox"]:active {
+    background: #dedede;
+}
+
+input[type="checkbox"]:checked:active {
+    background: #0057bc;
+    border-color: #0057bc;
+}
+
+button {
+    height: 30px;
+    padding: 6px 12px;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    background: #ffffff;
+}
+
+button.primary {
+    background: #086bdf;
+    border-color: #086bdf;
+    color: #ffffff;
+}
+
+button:hover {
+    background: #f9f9f9;
+    border-color: #adadad;
+}
+
+button.primary:hover {
+    background: #1378ec;
+    border-color: #1378ec;
+}
+
+button:focus {
+    outline: 3px solid #a5caf3;
+    outline-offset: 1px;
+}
+
+button:active {
+    background: #dedede;
+    border-color: #bdbdbd;
+}
+
+button.primary:active {
+    background: #0057bc;
+    border-color: #0057bc;
+}
+
+button:disabled, button.primary:disabled, input:not([type="checkbox"]):not([type="range"]):disabled, select:disabled, input[type="checkbox"]:disabled {
+    color: #a0a0a0;
+    background: #e9e9e9;
+    border-color: #d6d6d6;
+    outline: none;
+}
+
+input[type="checkbox"]:checked:disabled {
+    background: #c4c4c4;
+    border-color: #c4c4c4;
+    color: #ffffff;
+}
+
+select:disabled::picker-icon {
+    background: #dedede;
+    color: #999999;
+}
+
+/* Compact round slider handles and light inset scrollbar thumbs. */
+input[type="range"] { height: 26px; padding: 2px; border: none; background: transparent; }
+input[type="range"]:focus { outline: 2px solid #a5caf3; outline-offset: 1px; border-radius: 5px; }
+input::slider-track { height: 4px; background: #c5c5c9; border-radius: 2px; }
+input::slider-fill { background: #087aff; border-radius: 2px; }
+input::slider-thumb { width: 18px; height: 18px; background: linear-gradient(to bottom,#ffffff,#f7f7f7); border: 1px solid #b9b9bd; border-radius: 9px; }
+input:hover::slider-thumb { border-color: #8d8d92; }
+input:active::slider-thumb { background: #eaeaea; }
+input:disabled::slider-thumb { background: #ededed; border-color: #d0d0d0; }
+input:disabled::slider-fill { background: #bbbbbf; }
+::scrollbar { width: 12px; height: 12px; background: #fafafa; }
+::scrollbar-thumb { width: 26px; height: 26px; background: #b0b0b4; border: 3px solid #fafafa; border-radius: 6px; }
+::scrollbar-thumb:hover { background: #8f8f94; }
+::scrollbar-thumb:active { background: #727278; }
+::scrollbar-corner { background: #fafafa; }

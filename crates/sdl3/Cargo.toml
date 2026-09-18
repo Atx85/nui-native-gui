@@ -1,0 +1,9 @@
+[package]
+name = "native-ui-sdl3"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+native-ui = { path = "../core" }
+sdl3 = { version = "0.20.0", features = ["build-from-source-static"] }
+native-ui-text = { path = "../text" }

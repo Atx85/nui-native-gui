@@ -1,0 +1,29 @@
+/* Application layout. Panel/control appearance comes from the canonical skin. */
+body { display: flex; flex-direction: column; padding: 24px; gap: 18px; }
+header { height: 52px; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 68px; height: 48px; object-fit: contain; }
+.header-copy { flex-grow: 1; }
+.heading { height: 28px; font-size: 22px; }
+.subtitle { height: 20px; margin-top: 4px; }
+.workspace { height: 0; display: flex; flex-grow: 1; gap: 20px; }
+.canvas-pane { display: flex; flex-direction: column; flex-grow: 1; min-width: 220px; gap: 10px; }
+.viewport {
+    flex-grow: 1;
+    min-height: 200px;
+    padding: 12px;
+    background: #172331;
+    border: 1px solid #33465a;
+    border-radius: 8px;
+}
+.caption { height: 20px; font-size: 12px; }
+.options { overflow: auto; width: 268px; padding: 20px; }
+.panel-title { height: 24px; font-size: 17px; margin-bottom: 18px; }
+.field-label { height: 20px; margin-bottom: 6px; }
+select, input:not([type="checkbox"]):not([type="range"]) { height: 30px; padding: 4px 8px; margin-bottom: 18px; }
+.toggle-row { display: flex; align-items: center; gap: 9px; height: 26px; margin-bottom: 8px; }
+/* Labels in a flex row need an explicit grow rule; parent styling does not leak. */
+label[for="grid"], label[for="animate"] { flex-grow: 1; }
+button { height: 32px; padding: 6px 12px; margin-top: 18px; }
+.note { height: 18px; margin-top: 16px; font-size: 11px; }
+
+input[type="range"] { height: 30px; margin-bottom: 18px; }

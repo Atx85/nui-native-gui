@@ -1,0 +1,11 @@
+/* Demo-only Windows 11 arrangement; no reusable control styling here. */
+label, input, select { left: 112px; width: 416px; }
+#name-label { top: 42px; }
+#name { top: 72px; }
+#step-label { top: 130px; }
+#step { top: 160px; }
+#counting { top: 226px; }
+#counting-label { left: 144px; top: 225px; width: 384px; }
+button { top: 294px; width: 96px; }
+#demo { left: 324px; }
+#reset { left: 432px; }

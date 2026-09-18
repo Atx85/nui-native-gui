@@ -1,0 +1,13 @@
+/* Geometry only; the canonical macOS theme supplies all control appearance. */
+body { display: flex; gap: 24px; padding: 24px; }
+.panel { padding: 16px; display: flex; flex-direction: column; gap: 8px; overflow: auto; }
+#controls { width: 360px; }
+#preview { flex-grow: 1; min-width: 280px; }
+.title { font-size: 18px; height: 28px; }
+.row { display: flex; align-items: center; gap: 8px; height: 32px; }
+.row-label { width: 76px; }
+.action { flex-grow: 1; }
+#picture { width: 80px; height: 32px; object-fit: contain; }
+#scene { height: 110px; }
+#list { height: 96px; overflow: auto; display: flex; flex-direction: column; }
+.list-item { height: 32px; }

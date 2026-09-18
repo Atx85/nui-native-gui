@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head><title>Canvas studio</title></head>
+<body>
+    <header>
+        <img class="brand-mark" src="studio-mark" alt="Studio">
+        <section class="header-copy">
+            <label class="heading">Canvas studio</label>
+            <label class="subtitle">Drag the sliders. Scroll the options. Resize the window.</label>
+        </section>
+    </header>
+    <main class="workspace">
+        <section class="canvas-pane">
+            <canvas id="scene" class="viewport" tabindex="0"></canvas>
+            <label class="caption">Your renderer, inside a responsive native UI.</label>
+        </section>
+        <aside id="options" class="options panel" tabindex="0">
+            <label class="panel-title">View options</label>
+            <label class="field-label" for="pattern">Pattern</label>
+            <select id="pattern">
+                <option value="waves">Waves</option>
+                <option value="orbit">Orbit</option>
+                <option value="lissajous">Lissajous</option>
+            </select>
+            <label class="field-label" for="palette">Colour</label>
+            <select id="palette">
+                <option value="ocean">Ocean</option>
+                <option value="citrus">Citrus</option>
+                <option value="orchid">Orchid</option>
+            </select>
+            <label class="field-label" for="rate">Speed (0.1–4)</label>
+            <input id="rate" type="range" min="0.1" max="4" step="0.1" value="1">
+            <label class="field-label" for="amplitude">Amplitude</label>
+            <input id="amplitude" type="range" min="0" max="0.4" step="0.01" value="0.25">
+            <label class="field-label" for="detail">Curve detail</label>
+            <input id="detail" type="range" min="60" max="1440" step="60" value="720">
+            <div class="toggle-row">
+                <input id="grid" type="checkbox" checked>
+                <label for="grid">Show grid</label>
+            </div>
+            <div class="toggle-row">
+                <input id="animate" type="checkbox" checked>
+                <label for="animate">Animate</label>
+            </div>
+            <button id="reset" class="primary">Reset view</button>
+            <label class="note">Space pauses the focused canvas.</label>
+        </aside>
+    </main>
+</body>
+</html>

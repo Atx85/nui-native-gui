@@ -1,0 +1,18 @@
+[package]
+name = "native-ui-raylib"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+# Opt-in pixel tests require a desktop graphics session.
+desktop-tests = []
+
+[[test]]
+name = "render"
+harness = false
+required-features = ["desktop-tests"]
+
+[dependencies]
+native-ui = { path = "../core" }
+raylib = "6.0.0"
+fontdue = "0.9.3"

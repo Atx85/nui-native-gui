@@ -1,0 +1,16 @@
+/* Demo-only arrangement. Control appearance and default metrics come from the theme. */
+label, input, select {
+    position: absolute;
+    left: 132px;
+    top: 0;
+    width: 376px;
+}
+button { position: absolute; left: 0; top: 294px; width: 176px; }
+#demo { left: 132px; }
+#reset { left: 332px; }
+#name-label { top: 26px; }
+#name { top: 58px; }
+#step-label { top: 118px; }
+#step { top: 150px; }
+#counting { top: 228px; }
+#counting-label { left: 170px; top: 228px; width: 338px; }

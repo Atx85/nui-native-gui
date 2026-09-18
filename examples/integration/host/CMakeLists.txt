@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.20)
+project(native_ui_host_example LANGUAGES C)
+find_package(native_ui CONFIG REQUIRED COMPONENTS standalone)
+
+set(UI_BACKEND "sdl3" CACHE STRING "UI backend: sdl3, opengl or raylib")
+set_property(CACHE UI_BACKEND PROPERTY STRINGS sdl3 opengl raylib)
+if(NOT UI_BACKEND MATCHES "^(sdl3|opengl|raylib)$")
+    message(FATAL_ERROR "UI_BACKEND must be sdl3, opengl or raylib")
+endif()
+add_executable(hello-host main.c)
+target_compile_features(hello-host PRIVATE c_std_11)
+target_compile_definitions(hello-host PRIVATE UI_HOST_HEADER="${UI_BACKEND}.h")
+target_link_libraries(hello-host PRIVATE native_ui::standalone)
+if(MSVC)
+    target_compile_options(hello-host PRIVATE /utf-8 /W3 /WX)
+else()
+    target_compile_options(hello-host PRIVATE -Wall -Wextra -Werror)
+endif()
+add_custom_command(TARGET hello-host POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "$<TARGET_FILE:native_ui::standalone>" "$<TARGET_FILE_DIR:hello-host>"
+    VERBATIM)
+if(APPLE)
+    set_target_properties(hello-host PROPERTIES BUILD_RPATH "@loader_path")
+elseif(UNIX)
+    set_target_properties(hello-host PROPERTIES BUILD_RPATH "$ORIGIN")
+endif()

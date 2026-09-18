@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>native-ui controls demo</title>
+    <!-- The host supplies a reusable theme, layout.css, and the matching demo layout. -->
+</head>
+<body>
+    <label id="name-label" for="name">Your name</label>
+    <input id="name" type="text" placeholder="Type your name…" maxlength="80">
+    <label id="step-label" for="step">Count by</label>
+    <select id="step">
+        <option value="1">One at a time</option>
+        <option value="5">Five at a time</option>
+        <option value="10">Ten at a time</option>
+        <option value="100" disabled>One hundred (unavailable)</option>
+    </select>
+    <input id="counting" type="checkbox" checked>
+    <label id="counting-label" for="counting">Enable counting</label>
+    <button id="demo" class="primary" type="button">Click me</button>
+    <button id="reset" type="button">Reset</button>
+</body>
+</html>

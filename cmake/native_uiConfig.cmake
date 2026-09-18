@@ -1,0 +1,42 @@
+# The default runtime has no embedded SDL/raylib. Select standalone explicitly
+# only for an application that delegates its window to the SDK.
+get_filename_component(_native_ui_root "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
+foreach(_profile native_ui standalone)
+    if(_profile STREQUAL "standalone")
+        set(_runtime_dir "${_native_ui_root}/standalone")
+    else()
+        set(_runtime_dir "${_native_ui_root}")
+    endif()
+    if(WIN32)
+        set(_runtime "${_runtime_dir}/native_ui_c.dll")
+    elseif(APPLE)
+        set(_runtime "${_runtime_dir}/libnative_ui.dylib")
+    else()
+        set(_runtime "${_runtime_dir}/libnative_ui.so")
+    endif()
+    if(EXISTS "${_runtime}" AND NOT TARGET native_ui::${_profile})
+        add_library(native_ui::${_profile} SHARED IMPORTED)
+        set_target_properties(native_ui::${_profile} PROPERTIES
+            IMPORTED_LOCATION "${_runtime}"
+            INTERFACE_INCLUDE_DIRECTORIES "${_native_ui_root}"
+            INTERFACE_NUI_RUNTIME "${_profile}")
+        # Both variants implement the same core ABI: never link both into one app.
+        set_property(TARGET native_ui::${_profile} APPEND PROPERTY COMPATIBLE_INTERFACE_STRING NUI_RUNTIME)
+        if(WIN32)
+            set_target_properties(native_ui::${_profile} PROPERTIES
+                IMPORTED_IMPLIB "${_runtime_dir}/native_ui.lib")
+        endif()
+    endif()
+endforeach()
+foreach(_component IN LISTS native_ui_FIND_COMPONENTS)
+    if(NOT TARGET native_ui::${_component})
+        set(native_ui_FOUND FALSE)
+        set(native_ui_NOT_FOUND_MESSAGE "Requested runtime component '${_component}' is not in this SDK")
+        return()
+    endif()
+endforeach()
+unset(_native_ui_root)
+unset(_runtime_dir)
+unset(_runtime)
+unset(_profile)
+unset(_component)

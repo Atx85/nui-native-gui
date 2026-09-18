@@ -1,0 +1,15 @@
+/* Example application layout; the skin supplies ordinary control styling. */
+.viewport {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    width: 752px;
+    height: 360px;
+    padding: 12px;
+    background: #172331;
+    border: 1px solid #33465a;
+    border-radius: 8px;
+}
+button { position: absolute; left: 24px; top: 410px; width: 132px; }
+#reset { left: 168px; width: 100px; }
+label { position: absolute; left: 24px; top: 478px; width: 752px; height: 22px; }

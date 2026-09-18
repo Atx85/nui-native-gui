@@ -1,0 +1,32 @@
+<body>
+  <section id="controls" class="panel">
+    <label class="title">Controls</label>
+    <label for="name">Player name</label>
+    <input id="name" value="Ada" maxlength="40" placeholder="Your name">
+    <input id="echo" value="Ada" readonly>
+    <div class="row"><input id="enabled" type="checkbox" checked><label class="row-label" for="enabled">Enable sound</label></div>
+    <label>Export formats</label>
+    <div class="row">
+      <input id="png" name="formats" type="checkbox" value="png" checked><label class="row-label" for="png">PNG</label>
+      <input id="svg" name="formats" type="checkbox" value="svg"><label class="row-label" for="svg">SVG</label>
+    </div>
+    <label for="volume">Volume</label>
+    <input id="volume" type="range" min="0" max="100" step="5" value="55">
+    <label for="mode">Quality</label>
+    <select id="mode"><option value="normal" selected>Normal</option><option value="high">High</option></select>
+    <div class="row"><button id="apply" class="action primary">Read values</button><button id="reset" class="action">Reset values</button></div>
+    <div class="row"><button id="options" class="action">Replace options</button><button class="action" disabled>Unavailable</button></div>
+  </section>
+  <section id="preview" class="panel">
+    <label class="title">Images, canvas and scrolling</label>
+    <div class="row"><img id="picture" src="first" alt="Color tiles"><button id="swap" class="action">Switch image</button></div>
+    <canvas id="scene" tabindex="0"></canvas>
+    <label>Click the native canvas above.</label>
+    <div id="list" tabindex="0">
+      <label class="list-item">Row 1</label><label class="list-item">Row 2</label><label class="list-item">Row 3</label><label class="list-item">Row 4</label>
+      <label class="list-item">Row 5</label><label class="list-item">Row 6</label><label class="list-item">Row 7</label><label class="list-item">Row 8</label>
+    </div>
+    <div class="row"><button id="top" class="action">Scroll to top</button><button id="bottom" class="action">Scroll to bottom</button></div>
+    <input id="status" value="Ready" readonly>
+  </section>
+</body>

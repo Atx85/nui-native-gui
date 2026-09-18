@@ -1,0 +1,21 @@
+[package]
+name = "native-ui-opengl"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+native-ui = { path = "../core" }
+glow = "0.18.0"
+fontdue = "0.9.3"
+
+[dev-dependencies]
+sdl3 = { version = "0.20.0", features = ["build-from-source-static"] }
+native-ui-sdl3 = { path = "../sdl3" }
+
+[features]
+desktop-tests = []
+
+[[test]]
+name = "render"
+harness = false
+required-features = ["desktop-tests"]

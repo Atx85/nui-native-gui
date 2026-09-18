@@ -1,0 +1,15 @@
+[package]
+autotests = false
+name = "native-ui-raylib-examples"
+version = "0.1.0"
+edition = "2024"
+default-run = "raylib-showcase"
+
+[dependencies]
+native-ui = { path = "../../../../crates/core" }
+native-ui-raylib = { path = "../../../../crates/raylib" }
+raylib = "6.0.0"
+
+[[bin]]
+name = "raylib-showcase"
+path = "showcase.rs"

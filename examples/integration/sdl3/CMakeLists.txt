@@ -1,0 +1,51 @@
+cmake_minimum_required(VERSION 3.20)
+project(native_ui_sdl_overlay LANGUAGES C CXX)
+find_package(native_ui CONFIG REQUIRED)
+find_package(SDL3 3.2 CONFIG REQUIRED)
+
+function(configure_overlay_target target)
+    target_link_libraries(${target} PRIVATE native_ui::native_ui SDL3::SDL3)
+    if(MSVC)
+        target_compile_options(${target} PRIVATE /utf-8 /W3 /WX)
+    else()
+        target_compile_options(${target} PRIVATE -Wall -Wextra -Werror)
+    endif()
+    add_custom_command(TARGET ${target} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "$<TARGET_FILE:native_ui::native_ui>" "$<TARGET_FILE_DIR:${target}>"
+        VERBATIM)
+    if(WIN32)
+        get_target_property(sdl_type SDL3::SDL3 TYPE)
+        if(sdl_type STREQUAL "SHARED_LIBRARY")
+            add_custom_command(TARGET ${target} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "$<TARGET_FILE:SDL3::SDL3>" "$<TARGET_FILE_DIR:${target}>" VERBATIM)
+        endif()
+    endif()
+    if(APPLE)
+        set_target_properties(${target} PROPERTIES BUILD_RPATH "@loader_path")
+    elseif(UNIX)
+        set_target_properties(${target} PROPERTIES BUILD_RPATH "$ORIGIN")
+    endif()
+endfunction()
+add_executable(game-ui main.c)
+target_compile_features(game-ui PRIVATE c_std_11)
+configure_overlay_target(game-ui)
+
+# Repository/SDK validation can supply the integration test source explicitly.
+set(NUI_SDL_TEST_SOURCE "" CACHE FILEPATH "Borrowed renderer integration test")
+if(NUI_SDL_TEST_SOURCE)
+    enable_testing()
+    add_executable(overlay-check "${NUI_SDL_TEST_SOURCE}")
+    target_compile_features(overlay-check PRIVATE c_std_11)
+    configure_overlay_target(overlay-check)
+    file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/overlay-check.cpp" "#include \"${NUI_SDL_TEST_SOURCE}\"\n")
+    add_executable(overlay-check-cpp "${CMAKE_CURRENT_BINARY_DIR}/overlay-check.cpp")
+    target_compile_features(overlay-check-cpp PRIVATE cxx_std_17)
+    configure_overlay_target(overlay-check-cpp)
+    add_test(NAME overlay-c COMMAND overlay-check)
+    add_test(NAME overlay-cpp COMMAND overlay-check-cpp)
+    add_test(NAME game-smoke COMMAND game-ui --smoke-test)
+    set_tests_properties(overlay-c overlay-cpp game-smoke PROPERTIES
+        ENVIRONMENT "SDL_VIDEODRIVER=dummy;SDL_RENDER_DRIVER=software")
+endif()
