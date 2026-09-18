@@ -3,6 +3,9 @@ name = "native-ui"
 version = "0.1.0"
 edition = "2024"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 html5ever = "0.40.1"
 cssparser = "0.38.0"

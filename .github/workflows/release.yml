@@ -1,0 +1,113 @@
+name: Release SDK packages
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.platform }}-${{ matrix.arch }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux
+            arch: x86_64
+            artifact: native-ui-linux-x86_64
+            package_dir: native-ui-linux-x86_64
+            lib_path: target/release/libnative_ui.so
+          - os: macos-latest
+            platform: macos
+            arch: x86_64
+            artifact: native-ui-macos-x86_64
+            package_dir: native-ui-macos-x86_64
+            lib_path: target/release/libnative_ui.dylib
+          - os: windows-latest
+            platform: windows
+            arch: x86_64
+            artifact: native-ui-windows-x86_64
+            package_dir: native-ui-windows-x86_64
+            lib_path: target/release/native_ui.dll
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build library
+        shell: bash
+        run: cargo build --release -p native-ui --lib
+
+      - name: Assemble SDK package
+        shell: bash
+        env:
+          PACKAGE_DIR: ${{ matrix.package_dir }}
+          ARTIFACT: ${{ matrix.artifact }}
+        run: |
+          set -e
+          ROOT="$PACKAGE_DIR"
+          mkdir -p "$ROOT"
+          cp "${{ matrix.lib_path }}" "$ROOT/"
+          if [ "${{ matrix.platform }}" = "windows" ]; then
+            cp "target/release/native_ui.dll.lib" "$ROOT/native_ui.lib"
+          fi
+
+          cp native_ui.h "$ROOT/"
+          cp native_ui_renderer.h "$ROOT/"
+          cp native_ui_raylib.h "$ROOT/"
+          cp native_ui_sdl3.h "$ROOT/"
+          cp native_ui_themes.h "$ROOT/"
+          cp README.md "$ROOT/"
+          cp LANGUAGES.md "$ROOT/"
+          cp OPENGL.md "$ROOT/"
+          cp NOTICES.txt "$ROOT/"
+          cp sdk.json "$ROOT/"
+
+          cp -r themes "$ROOT/"
+          cp -r cmake "$ROOT/"
+          cp -r docs "$ROOT/"
+          cp -r examples "$ROOT/"
+
+          python - <<'PY'
+          import os, zipfile
+          from pathlib import Path
+          root = Path(os.environ['PACKAGE_DIR'])
+          artifact = os.environ['ARTIFACT'] + '.zip'
+          with zipfile.ZipFile(artifact, 'w', compression=zipfile.ZIP_DEFLATED) as zf:
+              for path in sorted(root.rglob('*')):
+                  if path.is_file():
+                      zf.write(path, path.relative_to(root.parent))
+          PY
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.zip
+
+  release:
+    name: Publish GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Download release artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+          generate_release_notes: true

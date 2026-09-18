@@ -13,6 +13,24 @@ Examples default to the canonical macOS theme. native_ui_themes.h contains
 NUI_THEME_MACOS, NUI_THEME_WINDOWS_11 and NUI_THEME_WINDOWS_XP for C/C++.
 Example source comments explain how to select an alternative in each language.
 
+## Release binaries
+
+The GitHub release assets bundle the compiled shared library, the C headers, the bundled theme CSS files, and the default example HTML/CSS assets needed for a consumer app. Each archive is named after the OS/architecture and includes the files below:
+
+- platform library: `libnative_ui.dylib` on macOS, `libnative_ui.so` on Linux, `native_ui.dll` on Windows
+- C headers: `native_ui.h`, `native_ui_renderer.h`, `native_ui_raylib.h`, `native_ui_sdl3.h`, `native_ui_themes.h`
+- default styling: `themes/*.css`
+- docs and licenses: `README.md`, `NOTICES.txt`, `LANGUAGES.md`, `OPENGL.md`
+- integration examples: `examples/` and `cmake/`
+
+Download the latest platform package from the GitHub Releases page:
+
+- Linux x86_64: https://github.com/Atx85/nui-native-gui/releases/latest/download/native-ui-linux-x86_64.zip
+- macOS x86_64: https://github.com/Atx85/nui-native-gui/releases/latest/download/native-ui-macos-x86_64.zip
+- Windows x86_64: https://github.com/Atx85/nui-native-gui/releases/latest/download/native-ui-windows-x86_64.zip
+
+The package layout is the same for each platform, with the OS-specific library file placed alongside the headers and theme files.
+
 Start with the control showcase:
 
     python3 build-language.py c --example showcase --run
